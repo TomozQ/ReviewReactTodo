@@ -4,6 +4,7 @@ import "./styles.css";
 export default function App() {
   const [todoText, setTodoText] = useState("");
   const [inCompleteTodos, setInCompleteTodos] = useState([]);
+  const [CompleteTodos, setCompleteTodos] = useState([]);
 
   const onChangeTodoText = (e) => setTodoText(e.target.value);
 
@@ -12,6 +13,12 @@ export default function App() {
     const newTodos = [...inCompleteTodos, todoText];
     setInCompleteTodos(newTodos);
     setTodoText("");
+  };
+
+  const onClickDelete = (index) => {
+    const newTodos = [...inCompleteTodos];
+    newTodos.splice(index, 1);
+    setInCompleteTodos(newTodos);
   };
 
   return (
@@ -33,7 +40,7 @@ export default function App() {
               <div key={todo} className="todo">
                 <li>{todo}</li>
                 <button>Complete</button>
-                <button>Cancel</button>
+                <button onClick={onClickDelete}>Cancel</button>
               </div>
             );
           })}
@@ -42,10 +49,14 @@ export default function App() {
       <div className="completeSpace">
         <p>COMPLETE</p>
         <ul>
-          <div className="todo">
-            <li>CodeSandboxの紹介</li>
-            <button>Return</button>
-          </div>
+          {CompleteTodos.map((todo) => {
+            return (
+              <div className="todo" key={todo}>
+                <li>{todo}</li>
+                <button>Return</button>
+              </div>
+            );
+          })}
         </ul>
       </div>
     </>
