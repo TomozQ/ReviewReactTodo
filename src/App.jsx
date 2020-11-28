@@ -9,6 +9,7 @@ export default function App() {
         <button>Todo</button>
       </div>
       <div className="incompleteSpace">
+        <p>INCOMPLETE</p>
         <ul>
           <div className="todo">
             <li>React入門</li>
@@ -23,6 +24,7 @@ export default function App() {
         </ul>
       </div>
       <div className="completeSpace">
+        <p>COMPLETE</p>
         <ul>
           <div className="todo">
             <li>CodeSandboxの紹介</li>
