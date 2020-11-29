@@ -46,7 +46,11 @@ export default function App() {
         onChange={onChangeTodoText}
         todo={todoText}
         onClick={onClickAdd}
+        disabled={incompleteTodos.length >= 5}
       />
+      {incompleteTodos.length >= 5 && (
+        <p>5件までしか登録できないよ。消化しなさい。(-_-)</p>
+      )}
       <IncompleteSpace
         todos={incompleteTodos}
         onClickComplete={onClickComplete}
