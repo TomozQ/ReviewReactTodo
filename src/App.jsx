@@ -52,25 +52,7 @@ export default function App() {
         onClickComplete={onClickComplete}
         onClickDelete={onClickDelete}
       />
-      <div className="completeSpace">
-        <p>COMPLETE</p>
-        <ul>
-          {CompleteTodos.map((todo, index) => {
-            return (
-              <div className="todo" key={todo}>
-                <li>{todo}</li>
-                <button
-                  onClick={() => {
-                    onClickReturn(index);
-                  }}
-                >
-                  Return
-                </button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+      <CompleteSpace todos={CompleteTodos} onClickReturn={onClickReturn} />
     </>
   );
 }
