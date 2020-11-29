@@ -3,29 +3,31 @@ import "./styles.css";
 
 export default function App() {
   const [todoText, setTodoText] = useState("");
-  const [inCompleteTodos, setInCompleteTodos] = useState([]);
+  const [incompleteTodos, setIncompleteTodos] = useState([]);
   const [CompleteTodos, setCompleteTodos] = useState([]);
 
   const onChangeTodoText = (e) => setTodoText(e.target.value);
 
   const onClickAdd = () => {
     if (todoText === "") return;
-    const newTodos = [...inCompleteTodos, todoText];
-    setInCompleteTodos(newTodos);
+    const newTodos = [...incompleteTodos, todoText];
+    setIncompleteTodos(newTodos);
     setTodoText("");
   };
 
   const onClickDelete = (index) => {
-    const newTodos = [...inCompleteTodos];
+    const newTodos = [...incompleteTodos];
     newTodos.splice(index, 1);
-    setInCompleteTodos(newTodos);
+    setIncompleteTodos(newTodos);
   };
 
   const onClickComplete = (index) => {
-    const newTodos = [...inCompleteTodos];
-    newTodos.splice(index, 1);
-    setInCompleteTodos(newTodos);
-    const newCompleteTodos = [...CompleteTodos, newTodos];
+    const newIncompleteTodos = [...incompleteTodos];
+    newIncompleteTodos.splice(index, 1);
+    setIncompleteTodos(newIncompleteTodos);
+    const newCompleteTodos = [...CompleteTodos, incompleteTodos[index]];
+    setCompleteTodos(newCompleteTodos);
+    console.log(newCompleteTodos);
   };
 
   return (
@@ -42,12 +44,24 @@ export default function App() {
       <div className="incompleteSpace">
         <p>INCOMPLETE</p>
         <ul>
-          {inCompleteTodos.map((todo, index) => {
+          {incompleteTodos.map((todo, index) => {
             return (
               <div key={todo} className="todo">
                 <li>{todo}</li>
-                <button onClick={onClickComplete}>Complete</button>
-                <button onClick={onClickDelete}>Cancel</button>
+                <button
+                  onClick={() => {
+                    onClickComplete(index);
+                  }}
+                >
+                  Complete
+                </button>
+                <button
+                  onClick={() => {
+                    onClickDelete(index);
+                  }}
+                >
+                  Cancel
+                </button>
               </div>
             );
           })}
@@ -56,7 +70,7 @@ export default function App() {
       <div className="completeSpace">
         <p>COMPLETE</p>
         <ul>
-          {CompleteTodos.map((todo) => {
+          {CompleteTodos.map((todo, index) => {
             return (
               <div className="todo" key={todo}>
                 <li>{todo}</li>
