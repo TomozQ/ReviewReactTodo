@@ -27,7 +27,14 @@ export default function App() {
     setIncompleteTodos(newIncompleteTodos);
     const newCompleteTodos = [...CompleteTodos, incompleteTodos[index]];
     setCompleteTodos(newCompleteTodos);
-    console.log(newCompleteTodos);
+  };
+
+  const onClickReturn = (index) => {
+    const newCompleteTodos = [...CompleteTodos];
+    newCompleteTodos.splice(index, 1);
+    setCompleteTodos(newCompleteTodos);
+    const newIncompleteTodos = [...incompleteTodos, CompleteTodos[index]];
+    setIncompleteTodos(newIncompleteTodos);
   };
 
   return (
@@ -74,7 +81,13 @@ export default function App() {
             return (
               <div className="todo" key={todo}>
                 <li>{todo}</li>
-                <button>Return</button>
+                <button
+                  onClick={() => {
+                    onClickReturn(index);
+                  }}
+                >
+                  Return
+                </button>
               </div>
             );
           })}
