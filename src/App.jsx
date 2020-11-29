@@ -47,32 +47,11 @@ export default function App() {
         todo={todoText}
         onClick={onClickAdd}
       />
-      <div className="incompleteSpace">
-        <p>INCOMPLETE</p>
-        <ul>
-          {incompleteTodos.map((todo, index) => {
-            return (
-              <div key={todo} className="todo">
-                <li>{todo}</li>
-                <button
-                  onClick={() => {
-                    onClickComplete(index);
-                  }}
-                >
-                  Complete
-                </button>
-                <button
-                  onClick={() => {
-                    onClickDelete(index);
-                  }}
-                >
-                  Cancel
-                </button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+      <IncompleteSpace
+        todos={incompleteTodos}
+        onClickComplete={onClickComplete}
+        onClickDelete={onClickDelete}
+      />
       <div className="completeSpace">
         <p>COMPLETE</p>
         <ul>
