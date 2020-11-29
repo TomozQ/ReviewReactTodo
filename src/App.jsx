@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./styles.css";
+import { InputSpace } from "./components/InputSpace";
+import { IncompleteSpace } from "./components/IncompleteSpace";
+import { CompleteSpace } from "./components/CompleteSpace";
 
 export default function App() {
   const [todoText, setTodoText] = useState("");
@@ -39,15 +42,11 @@ export default function App() {
 
   return (
     <>
-      <div className="inputSpace">
-        <input
-          onChange={onChangeTodoText}
-          type="text"
-          placeholder="Input Todo"
-          value={todoText}
-        />
-        <button onClick={onClickAdd}>Todo</button>
-      </div>
+      <InputSpace
+        onChange={onChangeTodoText}
+        todo={todoText}
+        onClick={onClickAdd}
+      />
       <div className="incompleteSpace">
         <p>INCOMPLETE</p>
         <ul>
