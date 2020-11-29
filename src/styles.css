@@ -33,7 +33,7 @@ button:focus {
 }
 .inputSpace {
   width: 100%;
-  background: linear-gradient(#b9e4ff, #57bdff);
+  background: #769fb6;
   height: 100px;
   display: flex;
   justify-content: center;
@@ -55,7 +55,7 @@ button:focus {
 }
 .incompleteSpace {
   width: 100%;
-  background: linear-gradient(#44446c, #6f6fa4);
+  background: #9dbbae;
   color: #fff;
   min-height: 200px;
   margin-top: -20px;
@@ -71,7 +71,7 @@ button:focus {
 }
 .completeSpace {
   width: 100%;
-  background: linear-gradient(#b4b4e8, #e1e1f6);
+  background: #d5d6aa;
   color: #000;
   min-height: 200px;
   margin-top: -20px;
