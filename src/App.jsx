@@ -21,6 +21,13 @@ export default function App() {
     setInCompleteTodos(newTodos);
   };
 
+  const onClickComplete = (index) => {
+    const newTodos = [...inCompleteTodos];
+    newTodos.splice(index, 1);
+    setInCompleteTodos(newTodos);
+    const newCompleteTodos = [...CompleteTodos, newTodos];
+  };
+
   return (
     <>
       <div className="inputSpace">
@@ -39,7 +46,7 @@ export default function App() {
             return (
               <div key={todo} className="todo">
                 <li>{todo}</li>
-                <button>Complete</button>
+                <button onClick={onClickComplete}>Complete</button>
                 <button onClick={onClickDelete}>Cancel</button>
               </div>
             );
